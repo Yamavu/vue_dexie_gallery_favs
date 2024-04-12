@@ -1,0 +1,5 @@
+img/*.jpg
+img/*.png
+*.csv
+favicon.ico
+lib/*.js

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Gallery App with Dexie.js</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="lib/vue.js" defer></script>
+    <script src="lib/dexie.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Gallery</h1>
+      <div class="search">Filter Title: 
+        <input type="text" v-model="searchQuery" @keyup.enter="performSearch">
+        <button @click="performSearch">Search</button>
+      </div>
+      <div class="gallery">
+        <div v-for="image in filteredImages" :key="image.id" class="image">
+          <img :src="imageUrl(image.url)" :alt="image.title" />
+          <p>{{ image.title }}</p>
+          <input type="checkbox" :checked="isInCart(image)" @change="toggleImageSelection(image)" />
+        </div>
+      </div>
+      <div class="cart gallery">
+        <div v-for="image in cart" :key="image.id" class="image">
+          <img :src="image.image_data" :alt="image.title" />
+          <p>{{ image.title }}</p>
+          <p>{{ formatFileSize(image.fileSize) }}</p>
+          <button @click="removeFromCart(image)">remove<br />from Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
