@@ -1,6 +1,6 @@
-const { createApp, reactive , ref} = Vue;
+const { createApp } = Vue;
 
-if (typeof createApp !== "function" || typeof reactive !== "function")
+if (typeof createApp !== "function")
   console.log("Vue.js not available");
 if (typeof Dexie !== "function") console.log("Dexie not available");
 
@@ -181,6 +181,7 @@ createApp({
         const loadedCart = await db.cart.toArray();
         this.images.push(...loadedImages);
         this.cart.push(...loadedCart);
+        console.log(`loaded ${loadedImages.length} images and ${loadedCart.length} cart items`);
       } catch (error) {
         console.error("Error loading images from IndexedDB:", error);
       }
