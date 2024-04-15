@@ -1,8 +1,6 @@
-const { createApp } = Vue;
-
-if (typeof createApp !== "function")
-  console.log("Vue.js not available");
-if (typeof Dexie !== "function") console.log("Dexie not available");
+ /** Gallery or Catalogue App using Vue.js and Dexie.js **/
+ 
+ /** Global variables */
 
 const IDB_Name = "Gallery";
 const IDB_Stores = {
@@ -11,6 +9,10 @@ const IDB_Stores = {
 };
 const ImageFolder = "img/";
 const maxImages = 4;
+
+/** Database functions **/
+
+if (typeof Dexie !== "function") console.log("Dexie not available");
 
 async function loadItemsFromCSV(db, csvPath) {
   try {
@@ -41,6 +43,13 @@ db.on("populate", async (trans) => {
   await loadItemsFromCSV(db, "items.csv");
   console.log("Initial data added to the database.");
 });
+
+/** Vue functions **/
+
+const { createApp } = Vue;
+
+if (typeof createApp !== "function")
+  console.log("Vue.js not available");
 
 createApp({
   data() {
