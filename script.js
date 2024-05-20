@@ -8,6 +8,7 @@ const IDB_Stores = {
   cart: "&id, title, url",
 };
 const ImageFolder = "img/";
+const csvPath = "items.csv";
 const maxImages = 4;
 
 /** Database functions **/
@@ -40,7 +41,7 @@ const db = new Dexie(IDB_Name);
 db.version(1).stores(IDB_Stores);
 db.on("populate", async (trans) => {
   console.log("Populating database with initial data...");
-  await loadItemsFromCSV(db, "items.csv");
+  await loadItemsFromCSV(db, csvPath);
   console.log("Initial data added to the database.");
 });
 

@@ -1,0 +1,43 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+* {margin: 0;}
+
+body {
+  background-color: antiquewhite;
+  color: sienna;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-inline: auto;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  margin: 1em;
+  padding: 1em;
+}
+.cart {
+  background-color: sienna;
+  border-radius: .5em;
+}
+.gallery > * {
+  place-items: center;
+  display: grid;
+  grid-template-rows: subgrid;
+  gap: 0.5em;
+  grid-row: span 3;
+  border-radius: .5em;
+  background-color: burlywood;
+  border: 1px solid sienna;
+  padding: 1em;
+}
+.cart > * {
+  grid-row: span 4; 
+}
+.gallery > * img {
+  max-width: 8em;
+  max-height: 8em;
+  margin: 0;
+}
